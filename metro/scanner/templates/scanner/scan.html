@@ -1,0 +1,11 @@
+<h2>Scan Ticket</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="number" name="ticket_id" placeholder="Ticket ID" required>
+
+    <button type="submit" name="action" value="entry">Entry Scan</button>
+    <button type="submit" name="action" value="exit">Exit Scan</button>
+</form>
+
+<p>{{ message }}</p>

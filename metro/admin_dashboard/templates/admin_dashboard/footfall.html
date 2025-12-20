@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Footfall Dashboard</title>
+</head>
+<body>
+    <h2>Daily Station Footfall</h2>
+
+    {% if footfalls %}
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Date</th>
+            <th>Station</th>
+            <th>Entries</th>
+            <th>Exits</th>
+        </tr>
+
+        {% for f in footfalls %}
+        <tr>
+            <td>{{ f.date }}</td>
+            <td>{{ f.station.name }}</td>
+            <td>{{ f.entry_count }}</td>
+            <td>{{ f.exit_count }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>No footfall data available.</p>
+    {% endif %}
+
+</body>
+</html>

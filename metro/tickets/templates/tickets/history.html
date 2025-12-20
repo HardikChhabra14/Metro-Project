@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Tickets</title>
+</head>
+<body>
+    <h2>My Ticket History</h2>
+
+    {% if tickets %}
+        <table border="1" cellpadding="8">
+            <tr>
+                <th>ID</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+
+            {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.id }}</td>
+                <td>{{ ticket.source.name }}</td>
+                <td>{{ ticket.destination.name }}</td>
+                <td>{{ ticket.price }}</td>
+                <td>{{ ticket.status }}</td>
+                <td>{{ ticket.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No tickets found.</p>
+    {% endif %}
+
+    <br>
+    <a href="/tickets/buy/">Buy New Ticket</a>
+</body>
+</html>
