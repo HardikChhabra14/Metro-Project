@@ -180,3 +180,5 @@ EMAIL_HOST_USER = 'hardik.chhabra1410@gmail.com'
 EMAIL_HOST_PASSWORD = 'hcgi yjbk idpx fnlh' 
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# FORCE SITE_ID (DO NOT REMOVE)
+SITE_ID = 2
