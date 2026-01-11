@@ -3,7 +3,7 @@ version: "3.9"
 services:
   web:
     build: .
-    command: gunicorn metro.wsgi:application --bind 0.0.0.0:8000 --workers 3
+    command: gunicorn metro.wsgi:application --bind 0.0.0.0:8000 
     volumes:
       - static_volume:/app/staticfiles
     env_file:
