@@ -11,7 +11,7 @@ services:
       - .env
     environment:
       - DATABASE_URL=postgresql://metrouser:strongpassword@db:5432/metrodb
-      - DJANGO_SETTINGS_MODULE=metro.settings   # ✅ CRITICAL
+      - DJANGO_SETTINGS_MODULE=metro.metro.settings   # ✅ CRITICAL
     depends_on:
       - db
     restart: unless-stopped
