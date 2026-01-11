@@ -3,39 +3,15 @@ version: "3.9"
 services:
   web:
     build: .
-    command: gunicorn metro.wsgi:application --bind 0.0.0.0:8000 
+    command: gunicorn metro.wsgi:application --bind 0.0.0.0:8000
     volumes:
+      - ./metro:/app        # ✅ MOUNT PROJECT CODE
       - static_volume:/app/staticfiles
     env_file:
       - .env
     environment:
       - DATABASE_URL=postgresql://metrouser:strongpassword@db:5432/metrodb
+      - DJANGO_SETTINGS_MODULE=metro.settings   # ✅ CRITICAL
     depends_on:
       - db
     restart: unless-stopped
-
-  db:
-    image: postgres:15
-    environment:
-      POSTGRES_DB: metrodb
-      POSTGRES_USER: metrouser
-      POSTGRES_PASSWORD: strongpassword
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    restart: unless-stopped
-
-  nginx:
-    image: nginx:latest
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - static_volume:/app/staticfiles
-    depends_on:
-      - web
-    restart: unless-stopped
-
-volumes:
-  postgres_data:
-  static_volume:
