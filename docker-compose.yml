@@ -7,6 +7,6 @@ web:
   env_file:
     - .env
   environment:
-    DJANGO_SETTINGS_MODULE: metro.metro.settings
+    DJANGO_SETTINGS_MODULE: metro.settings
   depends_on:
     - db
